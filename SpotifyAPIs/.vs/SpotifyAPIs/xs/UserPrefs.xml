@@ -1,4 +1,28 @@
 ﻿<Properties StartupConfiguration="{AFA888BF-C316-4186-9DB2-8F0B46121C94}|https">
-  <MonoDevelop.Ide.ItemProperties.SpotifyAPIs FirstBuild="True" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="SpotifyAPIs/Controllers/LoginController.cs">
+    <Files>
+      <File FileName="SpotifyAPIs/Controllers/WeatherForecastController.cs" Line="31" Column="40" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="SpotifyAPIs">
+            <Node name="SpotifyAPIs">
+              <Node name="Controllers">
+                <Node name="LoginController.cs" selected="True" />
+              </Node>
+              <Node name="Properties" expanded="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.ItemProperties.SpotifyAPIs FirstBuild="True" PreferredExecutionTarget="/Applications/Microsoft Edge.app" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MultiItemStartupConfigurations />
 </Properties>

@@ -1,12 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "EAWv3VRSFo8i0FLDKhHJhEp0xwGDK9WZoIFviS5AqyH9w27WWpwSr//b60+BKhdHHSRZddNI+1WyZeOS0zSOiQ==",
+  "dgSpecHash": "hMJZcFXz4TYLepfhZszmJw5RJF9mTuRfmFHz0XGZjZX+E1Z2FYlwCwwUKPyw/fwcEg0c37qeskJuqI3JgIo55g==",
   "success": true,
   "projectFilePath": "/Users/simonebitti/Documents/GitHub/musicpartyapi/SpotifyAPIs/SpotifyAPIs/SpotifyAPIs.csproj",
   "expectedPackageFiles": [
     "/Users/simonebitti/.nuget/packages/microsoft.aspnetcore.openapi/7.0.14/microsoft.aspnetcore.openapi.7.0.14.nupkg.sha512",
     "/Users/simonebitti/.nuget/packages/microsoft.extensions.apidescription.server/6.0.5/microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",
     "/Users/simonebitti/.nuget/packages/microsoft.openapi/1.4.3/microsoft.openapi.1.4.3.nupkg.sha512",
+    "/Users/simonebitti/.nuget/packages/newtonsoft.json/13.0.3/newtonsoft.json.13.0.3.nupkg.sha512",
     "/Users/simonebitti/.nuget/packages/swashbuckle.aspnetcore/6.5.0/swashbuckle.aspnetcore.6.5.0.nupkg.sha512",
     "/Users/simonebitti/.nuget/packages/swashbuckle.aspnetcore.swagger/6.5.0/swashbuckle.aspnetcore.swagger.6.5.0.nupkg.sha512",
     "/Users/simonebitti/.nuget/packages/swashbuckle.aspnetcore.swaggergen/6.5.0/swashbuckle.aspnetcore.swaggergen.6.5.0.nupkg.sha512",
