@@ -22,7 +22,10 @@
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.ItemProperties.SpotifyAPIs FirstBuild="True" PreferredExecutionTarget="/Applications/Microsoft Edge.app" />
+  <MonoDevelop.Ide.ItemProperties.SpotifyAPIs PreferredExecutionTarget="/Applications/Microsoft Edge.app" />
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MultiItemStartupConfigurations />
+  <Debugger.DebugSourceFolders>
+    <String>/Users/simonebitti/Library/Caches/VisualStudio/17.0/Symbols/raw.githubusercontent.com/dotnet/aspnetcore/3f1acb59718cadf111a0a796681e3d3509bb3381</String>
+  </Debugger.DebugSourceFolders>
 </Properties>

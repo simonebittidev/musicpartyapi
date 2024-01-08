@@ -2,6 +2,22 @@
   "version": 3,
   "targets": {
     "net7.0": {
+      "AspNet.Security.OAuth.Spotify/7.0.4": {
+        "type": "package",
+        "compile": {
+          "lib/net7.0/AspNet.Security.OAuth.Spotify.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net7.0/AspNet.Security.OAuth.Spotify.dll": {
+            "related": ".xml"
+          }
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
+      },
       "Microsoft.AspNetCore.OpenApi/7.0.14": {
         "type": "package",
         "dependencies": {
@@ -54,6 +70,22 @@
         },
         "runtime": {
           "lib/net6.0/Newtonsoft.Json.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "SpotifyAPI.Web/7.0.2": {
+        "type": "package",
+        "dependencies": {
+          "Newtonsoft.Json": "13.0.3"
+        },
+        "compile": {
+          "lib/net7.0/SpotifyAPI.Web.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net7.0/SpotifyAPI.Web.dll": {
             "related": ".xml"
           }
         }
@@ -124,6 +156,20 @@
     }
   },
   "libraries": {
+    "AspNet.Security.OAuth.Spotify/7.0.4": {
+      "sha512": "mFnyMM11dDX9faVgMro3Ni8GwvMyac2t2c6AjYJ4d9wgPs4myeQrOxv0gRrVrN1yv4rTb63Y72JU59CBMtjwJQ==",
+      "type": "package",
+      "path": "aspnet.security.oauth.spotify/7.0.4",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "aspnet.security.oauth.spotify.7.0.4.nupkg.sha512",
+        "aspnet.security.oauth.spotify.nuspec",
+        "lib/net7.0/AspNet.Security.OAuth.Spotify.dll",
+        "lib/net7.0/AspNet.Security.OAuth.Spotify.xml"
+      ]
+    },
     "Microsoft.AspNetCore.OpenApi/7.0.14": {
       "sha512": "GvrqOw9jyBSAUPQqEFmptKGwr7IH4Wvn+iDZKaEeccCmlXiBPRbTzdlqduc+teiMqnK/JJByg4FMwYHkPin1OA==",
       "type": "package",
@@ -414,6 +460,27 @@
         "packageIcon.png"
       ]
     },
+    "SpotifyAPI.Web/7.0.2": {
+      "sha512": "QzuwE1zzgQmm7YPodztT4kZUNLNGKPLD2mT5+TW2aCHpMm65O39PWNvJm7OalRbdcOI5Xmk8ZF+NOm7Xt0428w==",
+      "type": "package",
+      "path": "spotifyapi.web/7.0.2",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net5.0/SpotifyAPI.Web.dll",
+        "lib/net5.0/SpotifyAPI.Web.xml",
+        "lib/net6.0/SpotifyAPI.Web.dll",
+        "lib/net6.0/SpotifyAPI.Web.xml",
+        "lib/net7.0/SpotifyAPI.Web.dll",
+        "lib/net7.0/SpotifyAPI.Web.xml",
+        "lib/netstandard2.0/SpotifyAPI.Web.dll",
+        "lib/netstandard2.0/SpotifyAPI.Web.xml",
+        "lib/netstandard2.1/SpotifyAPI.Web.dll",
+        "lib/netstandard2.1/SpotifyAPI.Web.xml",
+        "spotifyapi.web.7.0.2.nupkg.sha512",
+        "spotifyapi.web.nuspec"
+      ]
+    },
     "Swashbuckle.AspNetCore/6.5.0": {
       "sha512": "FK05XokgjgwlCI6wCT+D4/abtQkL1X1/B9Oas6uIwHFmYrIO9WUD5aLC9IzMs9GnHfUXOtXZ2S43gN1mhs5+aA==",
       "type": "package",
@@ -507,8 +574,10 @@
   },
   "projectFileDependencyGroups": {
     "net7.0": [
+      "AspNet.Security.OAuth.Spotify >= 7.0.4",
       "Microsoft.AspNetCore.OpenApi >= 7.0.14",
       "Newtonsoft.Json >= 13.0.3",
+      "SpotifyAPI.Web >= 7.0.2",
       "Swashbuckle.AspNetCore >= 6.5.0"
     ]
   },
@@ -551,6 +620,10 @@
       "net7.0": {
         "targetAlias": "net7.0",
         "dependencies": {
+          "AspNet.Security.OAuth.Spotify": {
+            "target": "Package",
+            "version": "[7.0.4, )"
+          },
           "Microsoft.AspNetCore.OpenApi": {
             "target": "Package",
             "version": "[7.0.14, )"
@@ -558,6 +631,10 @@
           "Newtonsoft.Json": {
             "target": "Package",
             "version": "[13.0.3, )"
+          },
+          "SpotifyAPI.Web": {
+            "target": "Package",
+            "version": "[7.0.2, )"
           },
           "Swashbuckle.AspNetCore": {
             "target": "Package",

@@ -32,3 +32,5 @@
 /Users/simonebitti/Documents/GitHub/musicpartyapi/SpotifyAPIs/SpotifyAPIs/obj/Debug/net7.0/SpotifyAPIs.pdb
 /Users/simonebitti/Documents/GitHub/musicpartyapi/SpotifyAPIs/SpotifyAPIs/obj/Debug/net7.0/SpotifyAPIs.genruntimeconfig.cache
 /Users/simonebitti/Documents/GitHub/musicpartyapi/SpotifyAPIs/SpotifyAPIs/obj/Debug/net7.0/ref/SpotifyAPIs.dll
+/Users/simonebitti/Documents/GitHub/musicpartyapi/SpotifyAPIs/SpotifyAPIs/bin/Debug/net7.0/SpotifyAPI.Web.dll
+/Users/simonebitti/Documents/GitHub/musicpartyapi/SpotifyAPIs/SpotifyAPIs/bin/Debug/net7.0/AspNet.Security.OAuth.Spotify.dll
