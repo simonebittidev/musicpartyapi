@@ -1,9 +1,5 @@
-﻿using System;
-using System.Net.Http;
-using System.Net.Http.Json;
-using System.Text;
+﻿using System.Text;
 using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json;
 
 namespace SpotifyAPIs.Controllers;
 
@@ -18,23 +14,17 @@ public class LoginController : ControllerBase
         _logger = logger;
     }
 
-    //params.append("client_id", clientId);
-    //params.append("grant_type", "authorization_code");
-    //params.append("code", code);
-    //params.append("redirect_uri", "http://localhost:5173/callback");
-    //params.append("code_verifier", verifier!);
-
-    [HttpGet(Name = "Get")]
-    public async Task<string> GetAsync(string clientId, string grantType, string code, string redirectUri, string codeVerifier, string clientSecret)
+    [HttpGet("GetTokenAsync")]
+    public async Task<string> GetTokenAsync(string clientId, string grantType, string code, string redirectUri, string codeVerifier)
     {
-        var par = new List<KeyValuePair<string, string>>();
-        par.Add(new KeyValuePair<string, string>("client_id", clientId));
-        par.Add(new KeyValuePair<string, string>("grant_type", grantType));
-        par.Add(new KeyValuePair<string, string>("client_secret", clientSecret));
-
-        //par.Add("code", code);
-        //par.Add("redirect_uri", redirectUri);
-        //par.Add("code_verifier", codeVerifier);
+        var par = new List<KeyValuePair<string, string>>
+        {
+            new KeyValuePair<string, string>("client_id", clientId),
+            new KeyValuePair<string, string>("grant_type", grantType),
+            new KeyValuePair<string, string>("code", code),
+            new KeyValuePair<string, string>("redirect_uri", redirectUri),
+            new KeyValuePair<string, string>("code_verifier", codeVerifier)
+        };
 
         using (var httpClient = new HttpClient())
         {
@@ -52,8 +42,51 @@ public class LoginController : ControllerBase
         }
     }
 
+    [HttpGet("GetRedirectToAuthCodeFlowUrl")]
+    public string GetRedirectToAuthCodeFlowUrl(string clientId, string verifier, string redirectUri)
+    {
+        var challenge = GenerateCodeChallenge(verifier);
 
+        var stringBuilder = new StringBuilder();
+
+        stringBuilder.Append($"client_id={clientId}&");
+        stringBuilder.Append($"response_type=code&");
+        stringBuilder.Append($"scope=user-read-private user-read-email&");
+        stringBuilder.Append($"redirect_uri={redirectUri}&");
+        stringBuilder.Append($"code_challenge_method=S256&");
+        stringBuilder.Append($"code_challenge={challenge}");
+
+        return $"https://accounts.spotify.com/authorize?{stringBuilder}";
+    }
+
+    [HttpGet("GenerateCodeVerifier")]
+    public string GenerateCodeVerifier(int length)
+    {
+        string text = "";
+        string possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+        Random random = new Random();
+
+        for (int i = 0; i < length; i++)
+        {
+            text += possible[random.Next(possible.Length)];
+        }
+
+        return text;
+    }
+
+    private string GenerateCodeChallenge(string codeVerifier)
+    {
+        using (var sha256 = System.Security.Cryptography.SHA256.Create())
+        {
+            var data = Encoding.UTF8.GetBytes(codeVerifier);
+            var hash = sha256.ComputeHash(data);
+
+            var base64 = Convert.ToBase64String(hash);
+            base64 = base64.Replace('+', '-');
+            base64 = base64.Replace('/', '_');
+            base64 = base64.TrimEnd('=');
+
+            return base64;
+        }
+    }
 }
-
-
-
