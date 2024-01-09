@@ -44,6 +44,10 @@
               "target": "Package",
               "version": "[7.0.4, )"
             },
+            "Google.Cloud.Firestore": {
+              "target": "Package",
+              "version": "[3.4.0, )"
+            },
             "Microsoft.AspNetCore.OpenApi": {
               "target": "Package",
               "version": "[7.0.14, )"

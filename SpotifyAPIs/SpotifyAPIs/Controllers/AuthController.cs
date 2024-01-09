@@ -1,6 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json;
+﻿using Google.Apis.Auth.OAuth2;
+using Google.Cloud.Firestore;
+using Google.Cloud.Firestore.V1;
+using Microsoft.AspNetCore.Builder.Extensions;
+using Microsoft.AspNetCore.Mvc;
 using SpotifyAPI.Web;
+using SpotifyAPIs.Entities;
+using SpotifyAPIs.Provider;
+using static Google.Cloud.Firestore.V1.StructuredQuery.Types;
 
 namespace SpotifyAPIs.Controllers;
 
@@ -9,10 +15,12 @@ namespace SpotifyAPIs.Controllers;
 public class AuthController : ControllerBase
 {
     private readonly ILogger<AuthController> _logger;
+    private readonly FirestoreProvider _firestoreProvider;
 
-    public AuthController(ILogger<AuthController> logger)
+    public AuthController(ILogger<AuthController> logger, FirestoreProvider firestoreProvider)
     {
         _logger = logger;
+        _firestoreProvider = firestoreProvider;
     }
 
     [HttpGet("GenerateToken")]
@@ -22,7 +30,14 @@ public class AuthController : ControllerBase
             new PKCETokenRequest(clientId, code, new Uri(redirectUri), verifier)
         );
 
-        return initialResponse.AccessToken; //return user id and save token to the storage
+        var user = await new SpotifyClient(initialResponse.AccessToken).UserProfile.Current();
+        if(!string.IsNullOrEmpty(user?.Id))
+        {
+            var newLogin = new Login(user.Id, initialResponse.AccessToken);
+            await _firestoreProvider.AddOrUpdate<Login>(newLogin, CancellationToken.None);
+        }
+
+        return initialResponse.AccessToken; //Return tge 
     }
 
     [HttpGet("GetRedirectToAuthCodeFlowUrl")]
@@ -56,17 +71,4 @@ public class AuthController : ControllerBase
 
         return dictionary;
     }
-}
-
-
-public class Token
-{
-    [JsonProperty("access_token")]
-    public string AccessToken { get; set; }
-
-    [JsonProperty("token_type")]
-    public string TokenType { get; set; }
-
-    [JsonProperty("express_in")]
-    public int ExpiresIn { get; set; }
 }

@@ -27,5 +27,6 @@
   <MultiItemStartupConfigurations />
   <Debugger.DebugSourceFolders>
     <String>/Users/simonebitti/Library/Caches/VisualStudio/17.0/Symbols/raw.githubusercontent.com/dotnet/aspnetcore/3f1acb59718cadf111a0a796681e3d3509bb3381</String>
+    <String>/Users/simonebitti/Library/Caches/VisualStudio/17.0/Symbols/raw.githubusercontent.com/dotnet/runtime/5535e31a712343a63f5d7d796cd874e563e5ac14</String>
   </Debugger.DebugSourceFolders>
 </Properties>
