@@ -1,13 +1,7 @@
-﻿using System.Net.Http;
-using Google.Api;
-using Google.Cloud.Firestore;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.Extensions.Configuration;
+﻿using Google.Cloud.Firestore;
 using Newtonsoft.Json;
-using SpotifyAPI.Web;
 using SpotifyAPIs.Options;
 using SpotifyAPIs.Provider;
-using static SpotifyAPI.Web.Scopes;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -19,21 +13,31 @@ builder.Services.AddCors(options =>
                       policy =>
                       {
                           policy.WithOrigins("http://localhost:5173");
+                          policy.WithOrigins("http://localhost:3000");
+                          policy.WithOrigins("https://2751-109-116-98-124.ngrok-free.app");
                       });
 });
 
-
 var config = builder.Services.BuildServiceProvider().GetRequiredService<IConfiguration>();
-FirebaseOptions experienceSettingsTable = config?.GetSection("FirebaseAuth").Get<FirebaseOptions>();
 
+FirestoreOptions? experienceSettingsTable = config?.GetSection("FirestoreAuth")?.Get<FirestoreOptions>();
 
+var json = JsonConvert.SerializeObject(experienceSettingsTable);
 builder.Services.AddSingleton(_ => new FirestoreProvider(
     new FirestoreDbBuilder
     {
         ProjectId = "spotifymusicparty",
-        JsonCredentials = JsonConvert.SerializeObject(experienceSettingsTable) // <-- service account json file
+        JsonCredentials = json // <-- service account json file
     }.Build()
 ));
+
+
+//Important step for In-Memory Caching
+builder.Services.AddEasyCaching(options =>
+{
+    // use memory cache with a simple way
+    options.UseInMemory("inmemory");
+});
 
 builder.Services.AddControllers();
 

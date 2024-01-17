@@ -16,6 +16,7 @@
     <PackageReference Include="SpotifyAPI.Web" Version="7.0.2" />
     <PackageReference Include="AspNet.Security.OAuth.Spotify" Version="7.0.4" />
     <PackageReference Include="Google.Cloud.Firestore" Version="3.4.0" />
+    <PackageReference Include="EasyCaching.InMemory" Version="1.9.2" />
   </ItemGroup>
 
   <ItemGroup>
@@ -23,11 +24,15 @@
     <None Remove="Provider\" />
     <None Remove="Interface\" />
     <None Remove="Entities\" />
+    <None Remove="Model\" />
+    <None Remove="Helper\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Options\" />
     <Folder Include="Provider\" />
     <Folder Include="Interface\" />
     <Folder Include="Entities\" />
+    <Folder Include="Model\" />
+    <Folder Include="Helper\" />
   </ItemGroup>
 </Project>

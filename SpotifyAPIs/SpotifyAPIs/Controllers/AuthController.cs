@@ -1,12 +1,7 @@
-﻿using Google.Apis.Auth.OAuth2;
-using Google.Cloud.Firestore;
-using Google.Cloud.Firestore.V1;
-using Microsoft.AspNetCore.Builder.Extensions;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using SpotifyAPI.Web;
 using SpotifyAPIs.Entities;
 using SpotifyAPIs.Provider;
-using static Google.Cloud.Firestore.V1.StructuredQuery.Types;
 
 namespace SpotifyAPIs.Controllers;
 
@@ -30,14 +25,26 @@ public class AuthController : ControllerBase
             new PKCETokenRequest(clientId, code, new Uri(redirectUri), verifier)
         );
 
+        //TODO: try to deserialize JWT to get userid instead of execute a call to UserProfile
         var user = await new SpotifyClient(initialResponse.AccessToken).UserProfile.Current();
+
         if(!string.IsNullOrEmpty(user?.Id))
         {
             var newLogin = new Login(user.Id, initialResponse.AccessToken);
             await _firestoreProvider.AddOrUpdate<Login>(newLogin, CancellationToken.None);
         }
 
-        return initialResponse.AccessToken; //Return tge 
+        return user.Id; //Return userId to client 
+    }
+
+    [HttpGet("GetUserInfo")]
+    public async Task<PrivateUser> GetUserInfo(string userId)
+    {
+        var userLogin = await _firestoreProvider.Get<Login>(userId, CancellationToken.None);
+
+        var user = await new SpotifyClient(userLogin.AccessToken).UserProfile.Current();
+
+        return user; //Return userId to client 
     }
 
     [HttpGet("GetRedirectToAuthCodeFlowUrl")]
@@ -51,7 +58,7 @@ public class AuthController : ControllerBase
         {
             CodeChallengeMethod = "S256",
             CodeChallenge = challenge,
-            Scope = new[] { Scopes.PlaylistReadPrivate, Scopes.PlaylistReadCollaborative }
+            Scope = new[] { Scopes.PlaylistReadPrivate, Scopes.PlaylistReadCollaborative, Scopes.UserReadCurrentlyPlaying, Scopes.UserReadPrivate}
         };
         var uri = loginRequest.ToUri();
 

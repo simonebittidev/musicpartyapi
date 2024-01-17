@@ -1,32 +1,49 @@
 ﻿<Properties StartupConfiguration="{AFA888BF-C316-4186-9DB2-8F0B46121C94}|https">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="SpotifyAPIs/Controllers/LoginController.cs">
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <Debugger.DebugSourceFolders>
+    <String>/Users/simonebitti/Library/Caches/VisualStudio/17.0/Symbols/raw.githubusercontent.com/dotnet/aspnetcore/3f1acb59718cadf111a0a796681e3d3509bb3381</String>
+    <String>/Users/simonebitti/Library/Caches/VisualStudio/17.0/Symbols/raw.githubusercontent.com/dotnet/runtime/5535e31a712343a63f5d7d796cd874e563e5ac14</String>
+  </Debugger.DebugSourceFolders>
+  <MonoDevelop.Ide.ItemProperties.SpotifyAPIs PreferredExecutionTarget="/Applications/Microsoft Edge.app" />
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.Workbench ActiveDocument="SpotifyAPIs/Controllers/AuthController.cs">
     <Files>
-      <File FileName="SpotifyAPIs/Controllers/WeatherForecastController.cs" Line="31" Column="40" />
+      <File FileName="../../../../Library/Caches/VisualStudio/17.0/Symbols/raw.githubusercontent.com/dotnet/runtime/5535e31a712343a63f5d7d796cd874e563e5ac14/src/libraries/System.Private.CoreLib/src/System/Threading/ExecutionContext.cs" />
+      <File FileName="SpotifyAPIs/Program.cs" />
+      <File FileName="SpotifyAPIs/appsettings.json" />
+      <File FileName="SpotifyAPIs/appsettings.Development.json" />
+      <File FileName="SpotifyAPIs/Properties/launchSettings.json" />
+      <File FileName="../../../../Library/Caches/VisualStudio/17.0/Symbols/raw.githubusercontent.com/dotnet/runtime/5535e31a712343a63f5d7d796cd874e563e5ac14/src/coreclr/System.Private.CoreLib/src/System/Threading/Monitor.CoreCLR.cs" />
+      <File FileName="../../../../Library/Caches/VisualStudio/17.0/Symbols/raw.githubusercontent.com/dotnet/aspnetcore/3f1acb59718cadf111a0a796681e3d3509bb3381/src/Mvc/Mvc.Core/src/Infrastructure/ActionMethodExecutor.cs" />
+      <File FileName="../../../../Library/Caches/VisualStudio/17.0/Symbols/raw.githubusercontent.com/dotnet/runtime/5535e31a712343a63f5d7d796cd874e563e5ac14/src/libraries/System.Private.CoreLib/src/System/Threading/Tasks/Future.cs" />
+      <File FileName="SpotifyAPIs/Provider/FirestoreProvider.cs" />
+      <File FileName="../../../../.microsoft/usersecrets/350ad7f9-716e-45b8-a1e7-b9089c11b394/secrets.json" />
+      <File FileName="../../../../Library/Caches/VisualStudio/17.0/Symbols/raw.githubusercontent.com/dotnet/runtime/5535e31a712343a63f5d7d796cd874e563e5ac14/src/libraries/System.Private.CoreLib/src/System/Runtime/CompilerServices/AsyncTaskMethodBuilderT.cs" />
+      <File FileName="../../../../Library/Caches/VisualStudio/17.0/Symbols/raw.githubusercontent.com/dotnet/runtime/5535e31a712343a63f5d7d796cd874e563e5ac14/src/libraries/System.Private.CoreLib/src/System/Threading/Tasks/TaskContinuation.cs" />
+      <File FileName="../../../../Library/Caches/VisualStudio/17.0/Symbols/raw.githubusercontent.com/dotnet/aspnetcore/3f1acb59718cadf111a0a796681e3d3509bb3381/src/Servers/Kestrel/Core/src/Internal/AddressBinder.cs" />
+      <File FileName="SpotifyAPIs/Controllers/AuthController.cs" Line="27" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
-          <Node name="SpotifyAPIs">
-            <Node name="SpotifyAPIs">
-              <Node name="Controllers">
-                <Node name="LoginController.cs" selected="True" />
+          <Node name="SpotifyAPIs" expanded="True">
+            <Node name="SpotifyAPIs" expanded="True">
+              <Node name="Controllers" expanded="True">
+                <Node name="AuthController.cs" selected="True" />
               </Node>
+              <Node name="Entities" expanded="True" />
+              <Node name="Interface" expanded="True" />
               <Node name="Properties" expanded="True" />
+              <Node name="Provider" expanded="True" />
+              <Node name="appsettings.json" expanded="True" />
             </Node>
           </Node>
         </State>
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
-  </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.ItemProperties.SpotifyAPIs PreferredExecutionTarget="/Applications/Microsoft Edge.app" />
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MultiItemStartupConfigurations />
-  <Debugger.DebugSourceFolders>
-    <String>/Users/simonebitti/Library/Caches/VisualStudio/17.0/Symbols/raw.githubusercontent.com/dotnet/aspnetcore/3f1acb59718cadf111a0a796681e3d3509bb3381</String>
-    <String>/Users/simonebitti/Library/Caches/VisualStudio/17.0/Symbols/raw.githubusercontent.com/dotnet/runtime/5535e31a712343a63f5d7d796cd874e563e5ac14</String>
-  </Debugger.DebugSourceFolders>
 </Properties>

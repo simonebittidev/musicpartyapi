@@ -44,6 +44,10 @@
               "target": "Package",
               "version": "[7.0.4, )"
             },
+            "EasyCaching.InMemory": {
+              "target": "Package",
+              "version": "[1.9.2, )"
+            },
             "Google.Cloud.Firestore": {
               "target": "Package",
               "version": "[3.4.0, )"
