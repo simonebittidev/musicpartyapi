@@ -1,5 +1,4 @@
-﻿using System;
-using Google.Cloud.Firestore;
+﻿using Google.Cloud.Firestore;
 using SpotifyAPIs.Interface;
 
 namespace SpotifyAPIs.Entities
@@ -19,17 +18,24 @@ namespace SpotifyAPIs.Entities
         [FirestoreProperty]
         public string Description { get; set; }
 
+        public string OwnerId { get; set; }
+
+
         public PartyQueue()
         {
 
         }
 
-        public PartyQueue(string userId, string partyName, string partyDescription)
+        public PartyQueue(string userId, string partyName, string partyDescription, string ownerId)
         {
             UsersId = new string[]{ userId};
             Name = partyName;
             Description = partyDescription;
+            OwnerId = ownerId;
         }
     }
 }
+
+
+
 

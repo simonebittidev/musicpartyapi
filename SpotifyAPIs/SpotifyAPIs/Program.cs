@@ -1,7 +1,10 @@
-﻿using Google.Cloud.Firestore;
+﻿using Google.Api;
+using Google.Cloud.Firestore;
 using Newtonsoft.Json;
 using SpotifyAPIs.Options;
 using SpotifyAPIs.Provider;
+using Microsoft.AspNetCore.RateLimiting;
+using System.Threading.RateLimiting;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,9 +17,18 @@ builder.Services.AddCors(options =>
                       {
                           policy.WithOrigins("http://localhost:5173");
                           policy.WithOrigins("http://localhost:3000");
-                          policy.WithOrigins("https://2751-109-116-98-124.ngrok-free.app");
                       });
 });
+
+builder.Services.AddRateLimiter(_ => _
+    .AddFixedWindowLimiter(policyName: "fixed", options =>
+    {
+        options.PermitLimit = 4;
+        options.Window = TimeSpan.FromSeconds(12);
+        options.QueueProcessingOrder = QueueProcessingOrder.OldestFirst;
+        options.QueueLimit = 2;
+    }));
+
 
 var config = builder.Services.BuildServiceProvider().GetRequiredService<IConfiguration>();
 
@@ -47,6 +59,8 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
+
+app.UseRateLimiter();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

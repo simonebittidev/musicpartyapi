@@ -1,10 +1,7 @@
-﻿using EasyCaching.Core;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using SpotifyAPI.Web;
 using SpotifyAPIs.Entities;
-using SpotifyAPIs.Model;
 using SpotifyAPIs.Provider;
-using static SpotifyAPI.Web.PlaylistRemoveItemsRequest;
 
 namespace SpotifyAPIs.Controllers;
 
@@ -13,12 +10,14 @@ namespace SpotifyAPIs.Controllers;
 public class MusicController : ControllerBase
 {
     private readonly ILogger<AuthController> _logger;
+    private readonly IConfiguration _configuration;
     private readonly FirestoreProvider _firestoreProvider;
 
-    public MusicController(ILogger<AuthController> logger, FirestoreProvider firestoreProvider)
+    public MusicController(ILogger<AuthController> logger, FirestoreProvider firestoreProvider, IConfiguration configuration)
     {
         _logger = logger;
         _firestoreProvider = firestoreProvider;
+        _configuration = configuration;
     }
 
     [HttpGet("GetCurrentSong")]
@@ -26,7 +25,6 @@ public class MusicController : ControllerBase
     {
         try
         {
-
             var login = await _firestoreProvider.Get<Login>(userId, CancellationToken.None);
 
             if(!string.IsNullOrEmpty(login?.AccessToken))
@@ -62,9 +60,24 @@ public class MusicController : ControllerBase
 
             var result = await searchClient.Item(request);
 
-            return result;
+            return Ok(result);
         }
 
-        return default;
+        return Ok(default);
     }
+
+    //[HttpGet("AddSongToSpotifyQueue")]
+    //public async Task<ActionResult<QueueResponse?>> AddSongToSpotifyQueue(string userId, string partyId, string songId)
+    //{
+    //    var party = await _firestoreProvider.Get<PartyQueue>(partyId, CancellationToken.None);
+
+    //    if (!string.IsNullOrEmpty(login?.AccessToken))
+    //    {
+    //        var spotifyQueue = await new SpotifyClient(login.AccessToken).Player.GetQueue();
+
+    //        return Ok(spotifyQueue);
+    //    }
+
+    //    return Ok(default);
+    //}
 }
